@@ -1,9 +1,9 @@
-﻿using MahanApi.Dtos;
-using MahanApi.Services;
+﻿using MeetMasterApi.Dtos;
+using MeetMasterApi.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace MahanApi.Controllers
+namespace MeetMasterApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -16,7 +16,7 @@ namespace MahanApi.Controllers
             var user = await authService.RegisterAsync(request);
             if (user is null)
                 return BadRequest("Username already exists!");
-            
+
             return Ok(user);
         }
 

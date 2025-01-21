@@ -2,14 +2,14 @@
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
-using MahanApi.Data;
-using MahanApi.Dtos;
-using MahanApi.Models;
+using MeetMasterApi.Data;
+using MeetMasterApi.Dtos;
+using MeetMasterApi.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 
-namespace MahanApi.Services
+namespace MeetMasterApi.Services
 {
     public class AuthService(AppDbContext context, IConfiguration configuration) : IAuthService
     {
@@ -41,16 +41,16 @@ namespace MahanApi.Services
                     RefreshToken = await GeneratAndSaveRefreshTokenAsync(user)
                 };
 
-             return new TokenResponseDto
-                {
-                    AccessToken = CreateToken(user),
-                    RefreshToken = await GeneratAndSaveRefreshTokenAsync(user)
-                };
+            return new TokenResponseDto
+            {
+                AccessToken = CreateToken(user),
+                RefreshToken = await GeneratAndSaveRefreshTokenAsync(user)
+            };
         }
 
         public async Task<User?> RegisterAsync(RegisterDto request)
         {
-            if(await context.Users.AnyAsync(u => u.Username == request.Username))
+            if (await context.Users.AnyAsync(u => u.Username == request.Username))
             {
                 return null;
             }
@@ -76,7 +76,7 @@ namespace MahanApi.Services
         private async Task<User?> ValidateRefreshTokenAsync(Guid userId, string refreshToken)
         {
             var user = await context.Users.FindAsync(userId);
-            if(user is null || user.RefreshToken != refreshToken || user.RefreshTokenExpiryTime <= DateTime.UtcNow)
+            if (user is null || user.RefreshToken != refreshToken || user.RefreshTokenExpiryTime <= DateTime.UtcNow)
             {
                 return null;
             }
@@ -95,7 +95,7 @@ namespace MahanApi.Services
 
         private string GenerateRefreshToken()
         {
-            var randomNumber =  new byte[32];
+            var randomNumber = new byte[32];
             using var rng = RandomNumberGenerator.Create();
             rng.GetBytes(randomNumber);
             return Convert.ToBase64String(randomNumber);
@@ -110,7 +110,7 @@ namespace MahanApi.Services
             return refreshToken;
         }
 
-        private string CreateToken(User user) 
+        private string CreateToken(User user)
         {
             var claims = new List<Claim>
             {

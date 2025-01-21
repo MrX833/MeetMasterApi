@@ -1,7 +1,7 @@
-﻿using MahanApi.Dtos;
-using MahanApi.Models;
+﻿using MeetMasterApi.Dtos;
+using MeetMasterApi.Models;
 
-namespace MahanApi.Services
+namespace MeetMasterApi.Services
 {
     public interface IAuthService
     {

@@ -1,4 +1,4 @@
-﻿namespace MahanApi.Dtos
+﻿namespace MeetMasterApi.Dtos
 {
     public class LoginDto
     {

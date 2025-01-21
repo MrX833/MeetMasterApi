@@ -1,7 +1,7 @@
-﻿using MahanApi.Models;
+﻿using MeetMasterApi.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace MahanApi.Data
+namespace MeetMasterApi.Data
 {
     public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(options)
     {

@@ -1,6 +1,0 @@
-@MahanApi_HostAddress = http://localhost:5276
-
-GET {{MahanApi_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

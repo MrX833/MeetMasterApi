@@ -1,6 +1,6 @@
 using System.Text;
-using MahanApi.Data;
-using MahanApi.Services;
+using MeetMasterApi.Data;
+using MeetMasterApi.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
