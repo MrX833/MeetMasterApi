@@ -13,6 +13,11 @@ namespace MeetMasterApi.Controllers
         [HttpPost("register")]
         public async Task<ActionResult<string>> Register(RegisterDto request)
         {
+            if(request.Password != request.RepeatPassword)
+            {
+                return BadRequest("Passwords doesn't match!");
+            }
+
             var user = await authService.RegisterAsync(request);
             if (user is null)
                 return BadRequest("Username already exists!");
